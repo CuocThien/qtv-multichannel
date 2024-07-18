@@ -1,0 +1,31 @@
+<nz-layout class="layout">
+  <nz-content class="content">
+    <div class="login-form">
+      <form nz-form (ngSubmit)="login()">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="username">Username</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+            <input nz-input type="text" id="username" [(ngModel)]="username" name="username" required />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="6" nzFor="password">Password</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+            <input nz-input type="password" id="password" [(ngModel)]="password" name="password" required />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" type="submit">Login</button>
+          </nz-form-control>
+        </nz-form-item>
+
+        <div *ngIf="loginError" class="error-message">
+          Invalid username or password
+        </div>
+      </form>
+    </div>
+  </nz-content>
+</nz-layout>

@@ -1,0 +1,7 @@
+<nz-card [nzCover]="coverTemplate" class="post-card">
+  <nz-card-meta class="ant-card-meta-description" [nzTitle]="post.title"
+    [nzDescription]="post.description"></nz-card-meta>
+  <ng-template class="ant-card-cover" #coverTemplate>
+    <img alt="example" [src]="post.cover" />
+  </ng-template>
+</nz-card>

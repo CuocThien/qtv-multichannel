@@ -1,0 +1,25 @@
+.post-card {
+  width: 300px;
+  margin: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px; /* Add border-radius for the post card */
+  overflow: hidden; /* Ensure child elements do not overflow the card's rounded corners */
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .ant-card-meta-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 80px; /* (3 lines * line-height) */
+    // overflow: hidden;
+    // text-overflow: clip;
+    // white-space: break-spaces;
+  }
+}
