@@ -1,13 +1,15 @@
-@import "ng-zorro-antd/ng-zorro-antd.min.css";
+@import 'ng-zorro-antd/ng-zorro-antd.min.css';
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.login-container, .post-container {
+.post-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,4 +23,39 @@ body {
 
 nz-card {
   width: 300px;
+}
+
+/* login.component.scss */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.login-box {
+  width: 300px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 24px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    nz-form-item {
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
 }

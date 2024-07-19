@@ -1,4 +1,22 @@
-<nz-card *ngIf="post" [nzCover]="post.cover">
-  <nz-card-meta nzTitle="{{ post.title }}" nzDescription="{{ post.description }}">
-  </nz-card-meta>
-</nz-card>
+<!-- post-detail.component.html -->
+<div class="post-detail-container">
+  <div class="post-detail">
+    <div class="left-column">
+      <img class="post-cover" [src]="post.cover" alt="Post Cover" />
+      <div class="post-buttons">
+        <button nz-button nzType="default">Edit</button>
+        <button nz-button nzType="primary" nzDanger>Delete</button>
+        <button nz-button nzType="default">
+          Facebook
+        </button>
+        <button nz-button nzType="default">
+          Zalo
+        </button>
+      </div>
+    </div>
+    <div class="right-column">
+      <h1 class="post-title">{{ post.title }}</h1>
+      <p class="post-description">{{ post.description }}</p>
+    </div>
+  </div>
+</div>

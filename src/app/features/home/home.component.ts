@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
+  pageIndex = 1;
+  pageSize = 10;
+  total = this.posts.length;
 
   constructor(private postService: PostService, private router: Router) {}
 
@@ -17,7 +20,12 @@ export class HomeComponent implements OnInit {
     // this.postService.getPosts().subscribe((data: Post[]) => {
     this.posts = this.postService.getPosts();
   }
+
   viewPost(postId: number): void {
     this.router.navigate(['/post', postId]);
+  }
+
+  onPageChange(page: number): void {
+    this.pageIndex = page;
   }
 }

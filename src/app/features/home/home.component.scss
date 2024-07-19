@@ -1,5 +1,7 @@
 .home {
   padding: 16px;
+  height: 100%;
+  overflow: auto;
 
   .header {
     display: flex;
@@ -10,9 +12,12 @@
 
   .post-list {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
   }
 
-
+  .ant-pagination {
+    text-align: center;
+  }
 }

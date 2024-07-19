@@ -1,10 +1,12 @@
 <div class="home">
   <div class="header">
-    <h1>Home page</h1>
     <button nz-button nzType="primary">New Post</button>
   </div>
   <div class="post-list">
     <app-post-card *ngFor="let post of posts" [post]="post" (click)="viewPost(post.id)">
     </app-post-card>
   </div>
+  <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="pageSize"
+    (nzPageIndexChange)="onPageChange($event)">
+  </nz-pagination>
 </div>
