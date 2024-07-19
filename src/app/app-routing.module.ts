@@ -15,7 +15,7 @@ const routes: Routes = [
     component: PostDetailComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'facebook-post-detail', component: FacebookPostDetailComponent },
+  { path: 'post/fb/:id', component: FacebookPostDetailComponent },
 ];
 
 @NgModule({

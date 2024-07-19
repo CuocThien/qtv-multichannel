@@ -1,0 +1,110 @@
+.fb-post-detail {
+  height: 100%;
+  overflow: auto;
+  width: 70%;
+  margin: 0 auto;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .post-info {
+      margin-left: 12px;
+
+      .post-author {
+        font-weight: bold;
+        margin-right: 4px;
+      }
+
+      .post-follow {
+        color: #1890ff;
+      }
+
+      .post-time {
+        font-size: 12px;
+        color: #888;
+      }
+    }
+
+    .more-options {
+      margin-left: auto;
+      cursor: pointer;
+    }
+  }
+
+  .post-content {
+    margin-bottom: 16px;
+
+    .post-hashtag {
+      color: #1890ff;
+      margin-bottom: 12px;
+    }
+
+    .post-images {
+      max-width: 100%;
+
+      .image {
+        width: 100%;
+      }
+    }
+
+    .post-color-palettes {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+
+      .palette {
+        display: flex;
+
+        .color {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .post-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 16px;
+
+    .action-icons {
+      display: flex;
+      align-items: center;
+
+      i {
+        margin-right: 8px;
+      }
+
+      span {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  .post-comments {
+    .comment {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .comment-content {
+        margin-left: 12px;
+
+        .comment-author {
+          font-weight: bold;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

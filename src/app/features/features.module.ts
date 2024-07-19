@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -31,6 +34,9 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     ReactiveFormsModule,
     NzLayoutModule,
     NzPaginationModule,
+    NzDividerModule,
+    NzAvatarModule,
+    NzIconModule,
   ],
   exports: [
     LoginComponent,

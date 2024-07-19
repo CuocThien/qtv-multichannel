@@ -1,8 +1,57 @@
-<nz-layout>
-  <nz-header>Facebook Post Detail Page</nz-header>
-  <nz-content>
-    <nz-card nzTitle="Facebook Post Detail">
-      <!-- Similar structure to Post Detail Page but with Facebook-specific elements -->
-    </nz-card>
-  </nz-content>
-</nz-layout>
+<div class="fb-post-detail">
+  <div class="post-header">
+    <nz-avatar nzIcon="user" nzSize="large"></nz-avatar>
+    <div class="post-info">
+      <span class="post-author">D3design</span>
+      <span class="post-follow">• Theo dõi</span>
+      <br />
+      <span class="post-time">1 ngày ·</span>
+      <i nz-icon nzType="global"></i>
+    </div>
+    <i nz-icon nzType="more" nzTheme="outline" class="more-options"></i>
+  </div>
+
+  <div class="post-content">
+    <p>Bảng màu của mây trời mộng mơ 🌈</p>
+    <div class="post-hashtag">#d3design</div>
+    <div class="post-images">
+      <img
+        src="https://plus.unsplash.com/premium_photo-1673306778968-5aab577a7365?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="image1" class="image" />
+      <img
+        src="https://plus.unsplash.com/premium_photo-1719955779443-4c22893486ab?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="image2" class="image" />
+    </div>
+    <div class="post-color-palettes">
+      <div class="palette">
+        <span class="color" style="background-color: #a6a6e0;"></span>
+        <span class="color" style="background-color: #f49ac2;"></span>
+        <span class="color" style="background-color: #ffe4e1;"></span>
+        <span class="color" style="background-color: #f0a1bf;"></span>
+      </div>
+      <div class="palette">
+        <span class="color" style="background-color: #d5d9e0;"></span>
+        <span class="color" style="background-color: #e0c3fc;"></span>
+        <span class="color" style="background-color: #f7f7f7;"></span>
+        <span class="color" style="background-color: #94d0cc;"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-actions">
+    <nz-divider nzType="horizontal"></nz-divider>
+    <div class="action-icons">
+      <i nz-icon nzType="heart" nzTheme="outline"></i>
+      <span>12K</span>
+      <i nz-icon nzType="message" nzTheme="outline"></i>
+      <span>135</span>
+      <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+      <span>4.3K</span>
+    </div>
+    <nz-divider nzType="horizontal"></nz-divider>
+  </div>
+
+  <div class="post-comments">
+    <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+  </div>
+</div>

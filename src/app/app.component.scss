@@ -13,6 +13,7 @@
   position: relative;
   z-index: 10;
   min-height: 100vh;
+  background-color: #e9f4f9;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
 }
 
@@ -25,7 +26,7 @@
 }
 
 .trigger:hover {
-  color: #1890ff;
+  color: #000;
 }
 
 .sidebar-logo {
@@ -34,7 +35,7 @@
   padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
+  background-color: #e9f4f9;
   transition: all 0.3s;
 }
 
@@ -48,7 +49,7 @@
 .sidebar-logo h1 {
   display: inline-block;
   margin: 0 0 0 20px;
-  color: #fff;
+  color: #000;
   font-weight: 600;
   font-size: 14px;
   font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
@@ -65,8 +66,8 @@ nz-header {
   position: relative;
   height: 64px;
   padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  background-color: #fff;
+  // box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 
 .inner-content {
@@ -84,5 +85,59 @@ nz-header {
 .btn-logout button {
   width: 80%;
   background-color: transparent;
-  color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+// menu
+
+::ng-deep {
+  .ant-menu {
+    background-color: #e9f4f9 !important; /* Background color of the menu */
+
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      background-color: #e9f4f9 !important; /* Background color of menu items */
+      color: #000 !important; /* Text color of menu items */
+
+      &:hover {
+        background-color: #c0e2e7 !important; /* Hover color for menu items */
+        color: #000 !important; /* Hover text color for menu items */
+        font-weight: bold;
+      }
+    }
+
+    .ant-menu-item-selected {
+      background-color: #e9f4f9 !important; /* Selected item background color */
+      color: #000 !important; /* Selected item text color */
+    }
+
+    .ant-menu-item-active {
+      background-color: #e9f4f9 !important; /* Active item background color */
+      color: #000 !important; /* Active item text color */
+    }
+  }
+
+  .ant-menu-horizontal {
+    .ant-menu-item {
+      border-bottom: 2px solid #000 !important; /* Bottom border for horizontal menu items */
+
+      &::after {
+        border-bottom-color: #000 !important; /* Indicator color for horizontal menu items */
+      }
+    }
+
+    .ant-menu-item-selected {
+      border-bottom-color: #000 !important; /* Selected item bottom border color */
+    }
+  }
+
+  .ant-menu-vertical,
+  .ant-menu-vertical-left,
+  .ant-menu-vertical-right,
+  .ant-menu-inline {
+    .ant-menu-sub {
+      background-color: #e9f4f9 !important; /* Background color for submenu */
+    }
+  }
 }

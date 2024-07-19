@@ -1,0 +1,14 @@
+.comment {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .comment-content {
+    margin-left: 12px;
+
+    .comment-author {
+      font-weight: bold;
+      margin-right: 4px;
+    }
+  }
+}
