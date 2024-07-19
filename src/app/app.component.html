@@ -30,7 +30,9 @@
       </li>
     </ul>
     <div class="btn-logout">
-      <button nz-button (click)="logout()">Log out</button>
+      <button *ngIf="!isCollapsed" nz-button (click)="logout()">Log out</button>
+      <button *ngIf="isCollapsed" nz-button (click)="logout()"><span nz-icon nzType="logout"
+          nzTheme="outline"></span></button>
     </div>
   </nz-sider>
   <nz-layout *ngIf="isLoggedIn">
