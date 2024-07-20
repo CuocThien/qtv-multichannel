@@ -16,12 +16,14 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { PolicyComponent } from './policy/policy.component';
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
     PostDetailComponent,
     FacebookPostDetailComponent,
+    PolicyComponent,
   ],
   imports: [
     SharedModule,
