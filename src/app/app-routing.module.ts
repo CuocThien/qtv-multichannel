@@ -5,10 +5,12 @@ import { HomeComponent } from './features/home/home.component';
 import { PostDetailComponent } from './features/post-detail/post-detail.component';
 import { FacebookPostDetailComponent } from './features/facebook-post-detail/facebook-post-detail.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { PolicyComponent } from './features/policy/policy.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'policy', component: PolicyComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'post/:id',
