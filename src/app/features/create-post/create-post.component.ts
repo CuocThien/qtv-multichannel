@@ -43,6 +43,7 @@ export class CreatePostComponent {
       content: ['', [Validators.required]],
       cover: [null],
       photoUrls: [null],
+      photoUrl: [null],
       isFacebook: [false],
       isInstagram: [false],
       isZalo: [false],
@@ -108,6 +109,7 @@ export class CreatePostComponent {
       this.postForm.patchValue({
         cover: this.imagePreview,
         photoUrls: this.images,
+        photoUrl: this.images[0],
         isCreateNow: !this.isSchedulePost,
       });
       this.postService.createPost(this.postForm.value).subscribe(
