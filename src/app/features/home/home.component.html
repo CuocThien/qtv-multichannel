@@ -1,6 +1,6 @@
 <div class="home">
   <div class="header">
-    <button nz-button nzType="primary">New Post</button>
+    <button nz-button nzType="primary" (click)="newPost()">New Post</button>
   </div>
   <div class="post-list">
     <app-post-card *ngFor="let post of posts" [post]="post" (click)="viewPost(post.id)">

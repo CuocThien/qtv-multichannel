@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services';
+import { API_URL } from '../../../environments/environment.prod';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -17,13 +18,19 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
-    const authToken = this.authService.getToken();
-    if (authToken) {
-      const clonedReq = req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${authToken}`),
-      });
-      return next.handle(clonedReq);
+    const uploadUrl = [`${API_URL}/uploads`, `${API_URL}/upload`];
+    if (uploadUrl.includes(req.url)) {
+      return next.handle(req);
     }
-    return next.handle(req);
+    const authToken = this.authService.getToken();
+    let headers = req.headers.set('Content-Type', 'application/json');
+
+    if (authToken) {
+      headers = headers.set('Authorization', `Bearer ${authToken}`);
+    }
+
+    const clonedRequest = req.clone({ headers });
+
+    return next.handle(clonedRequest);
   }
 }

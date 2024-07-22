@@ -1,29 +1,43 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { API_URL } from '../../../environments/environment.prod';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly TOKEN_KEY = 'authToken';
+  private readonly REF_TOKEN_KEY = 'authRefeshToken';
   private isLoggedInSubject: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private readonly http: HttpClient,
+    private message: NzMessageService,
+  ) {}
 
   login(username: string, password: string): boolean {
     // Add your authentication logic here
-    if (username === 'user' && password === 'password') {
-      localStorage.setItem(
-        this.TOKEN_KEY,
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsIm9yZ2FuaXphdGlvbklkIjoxLCJpYXQiOjE2OTcyNzgzNDQsImV4cCI6MTY5NzM2NDc0NH0.TNiw6eAbzZwNJ6OSF1RSsG-VEP0JH7_MU6yqC1Uu34I',
-      );
-      this.isLoggedInSubject.next(true);
-      this.router.navigate(['/home']);
-      return true;
-    }
-    return false;
+    let isSuccess = false;
+    this.http.post(`${API_URL}/auth/login`, { username, password }).subscribe(
+      (response: any) => {
+        const { accessToken, refreshToken } = response?.data;
+        localStorage.setItem(this.TOKEN_KEY, accessToken);
+        localStorage.setItem(this.REF_TOKEN_KEY, refreshToken);
+        this.isLoggedInSubject.next(true);
+        this.router.navigate(['/home']);
+        isSuccess = true;
+        this.message.error(response.data.message);
+      },
+      (error) => {
+        this.message.error(error.error.message);
+      },
+    );
+    return isSuccess;
   }
 
   logout(): void {

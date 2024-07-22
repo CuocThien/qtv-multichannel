@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +34,7 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzButtonModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

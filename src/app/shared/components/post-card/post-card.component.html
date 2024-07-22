@@ -2,6 +2,7 @@
   <nz-card-meta class="ant-card-meta-description" [nzTitle]="post.title"
     [nzDescription]="post.description"></nz-card-meta>
   <ng-template class="ant-card-cover" #coverTemplate>
-    <img alt="example" [src]="post.cover" />
+    <img alt="example"
+      [src]="post.cover || 'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg'" />
   </ng-template>
 </nz-card>

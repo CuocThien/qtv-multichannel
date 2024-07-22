@@ -17,6 +17,12 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { PolicyComponent } from './policy/policy.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../core/interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -24,10 +30,12 @@ import { PolicyComponent } from './policy/policy.component';
     PostDetailComponent,
     FacebookPostDetailComponent,
     PolicyComponent,
+    CreatePostComponent,
   ],
   imports: [
     SharedModule,
     CommonModule,
+    CKEditorModule,
     NzCardModule,
     FormsModule,
     NzButtonModule,
@@ -39,12 +47,17 @@ import { PolicyComponent } from './policy/policy.component';
     NzDividerModule,
     NzAvatarModule,
     NzIconModule,
+    NzUploadModule,
+    NzDatePickerModule,
   ],
   exports: [
     LoginComponent,
     HomeComponent,
     PostDetailComponent,
     FacebookPostDetailComponent,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 })
 export class FeaturesModule {}

@@ -6,6 +6,7 @@ import { PostDetailComponent } from './features/post-detail/post-detail.componen
 import { FacebookPostDetailComponent } from './features/facebook-post-detail/facebook-post-detail.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { PolicyComponent } from './features/policy/policy.component';
+import { CreatePostComponent } from './features/create-post/create-post.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -18,6 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'post/fb/:id', component: FacebookPostDetailComponent },
+  { path: 'create-post', component: CreatePostComponent },
 ];
 
 @NgModule({
