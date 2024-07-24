@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../../core/services';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Post } from '../../core/models';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-post-detail',
@@ -17,6 +18,7 @@ export class PostDetailComponent implements OnInit {
     private postService: PostService,
     private router: Router,
     private msg: NzMessageService,
+    private modal: NzModalService,
   ) {}
 
   ngOnInit(): void {
@@ -40,8 +42,30 @@ export class PostDetailComponent implements OnInit {
       case 'facebook':
         this.router.navigate([`post/fb/${this.post.facebookPostId}`]);
         break;
+      case 'instagram':
+        this.router.navigate([`post/instagram/${this.post.instagramPostId}`]);
+        break;
+      case 'zalo':
+        this.router.navigate([`post/zalo/${this.post.zaloPostId}`]);
+        break;
       default:
         return;
     }
+  }
+
+  showDeleteConfirm(): void {
+    this.modal.confirm({
+      nzTitle: 'Bạn có chắc muốn xóa bài đăng này không?',
+      nzContent: '<b style="color: red;">Hành động này không thể hoàn tác</b>',
+      nzOkText: 'Có',
+      nzOkDanger: true,
+      nzOnOk: () => this.deletePost(),
+      nzCancelText: 'Không',
+      nzOnCancel: () => console.log('Hủy bỏ'),
+    });
+  }
+
+  deletePost() {
+    this.msg.success('delete successfully');
   }
 }

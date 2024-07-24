@@ -25,13 +25,15 @@ export class AuthService {
     let isSuccess = false;
     this.http.post(`${API_URL}/auth/login`, { username, password }).subscribe(
       (response: any) => {
-        const { accessToken, refreshToken } = response?.data;
-        localStorage.setItem(this.TOKEN_KEY, accessToken);
-        localStorage.setItem(this.REF_TOKEN_KEY, refreshToken);
-        this.isLoggedInSubject.next(true);
-        this.router.navigate(['/home']);
-        isSuccess = true;
-        this.message.error(response.data.message);
+        if (response) {
+          const { accessToken, refreshToken } = response?.data;
+          localStorage.setItem(this.TOKEN_KEY, accessToken);
+          localStorage.setItem(this.REF_TOKEN_KEY, refreshToken);
+          this.isLoggedInSubject.next(true);
+          this.router.navigate(['/home']);
+          isSuccess = true;
+          this.message.error(response.data.message);
+        }
       },
       (error) => {
         this.message.error(error.error.message);

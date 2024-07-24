@@ -7,6 +7,8 @@ import { FacebookPostDetailComponent } from './features/facebook-post-detail/fac
 import { AuthGuard } from './core/guards/auth.guard';
 import { PolicyComponent } from './features/policy/policy.component';
 import { CreatePostComponent } from './features/create-post/create-post.component';
+import { InstagramPostDetailComponent } from './features/instagram-post-detail/instagram-post-detail.component';
+import { ZaloPostDetailComponent } from './features/zalo-post-detail/zalo-post-detail.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -19,6 +21,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'post/fb/:id', component: FacebookPostDetailComponent },
+  { path: 'post/instagram/:id', component: InstagramPostDetailComponent },
+  { path: 'post/zalo/:id', component: ZaloPostDetailComponent },
   { path: 'create-post', component: CreatePostComponent },
 ];
 

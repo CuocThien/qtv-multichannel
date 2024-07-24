@@ -1,0 +1,52 @@
+.post-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+nz-card {
+  width: 100%;
+  max-width: 500px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.post-header-info {
+  margin-left: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.post-time {
+  color: gray;
+}
+
+.post-content p {
+  margin: 10px 0;
+}
+
+.post-content img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.post-comment {
+  padding-top: 10px;
+}
+
+.post-comment input {
+  width: 100%;
+}

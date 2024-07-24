@@ -12,7 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class HomeComponent implements OnInit {
   posts: Post[] = [];
   pageIndex = 1;
-  pageSize = 3;
+  pageSize = 6;
   total = this.posts.length;
   query: any;
 

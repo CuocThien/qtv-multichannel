@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { FacebookPostDetailComponent } from './facebook-post-detail/facebook-post-detail.component';
 
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -23,6 +24,8 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../core/interceptors/auth.interceptor';
+import { InstagramPostDetailComponent } from './instagram-post-detail/instagram-post-detail.component';
+import { ZaloPostDetailComponent } from './zalo-post-detail/zalo-post-detail.component';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -31,6 +34,8 @@ import { AuthInterceptor } from '../core/interceptors/auth.interceptor';
     FacebookPostDetailComponent,
     PolicyComponent,
     CreatePostComponent,
+    InstagramPostDetailComponent,
+    ZaloPostDetailComponent,
   ],
   imports: [
     SharedModule,
@@ -49,6 +54,7 @@ import { AuthInterceptor } from '../core/interceptors/auth.interceptor';
     NzIconModule,
     NzUploadModule,
     NzDatePickerModule,
+    NzModalModule,
   ],
   exports: [
     LoginComponent,
