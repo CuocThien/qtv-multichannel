@@ -3,6 +3,7 @@ import { PostService } from '../../core/services';
 import { Post } from '../../core/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { isEmpty } from 'lodash';
 
 @Component({
   selector: 'app-home',
@@ -26,9 +27,11 @@ export class HomeComponent implements OnInit {
   private _getPosts(query: any) {
     this.postService.getPosts(query).subscribe(
       (response: any) => {
-        if (response) {
+        if (!isEmpty(response)) {
           this.posts = response.data.result;
           this.total = response.data.total;
+          this.pageIndex = query.page;
+          this.pageSize = query.limit;
           this.router.navigate([], {
             relativeTo: this.route,
             queryParams: query,
@@ -44,13 +47,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((query) => {
-      if (query) {
+      if (!isEmpty(query)) {
         this.query = query;
+        this._getPosts(this.query);
+        return;
       }
-      this.query = { page: this.pageIndex, limit: this.pageSize };
+      this.query = { page: 1, limit: 6 };
+      this._getPosts(this.query);
     });
-    // this.postService.getPosts().subscribe((data: Post[]) => {
-    this._getPosts(this.query);
   }
 
   viewPost(postId: string): void {
