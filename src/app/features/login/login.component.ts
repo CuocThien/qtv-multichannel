@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../core/services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
+import { AuthenticationResult } from '@azure/msal-browser';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,12 @@ export class LoginComponent {
   password!: string;
   loginError: boolean = false;
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private msalService: MsalService,
+    private msalBroadcastService: MsalBroadcastService,
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -25,6 +32,11 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password);
+      this.msalService
+        .loginPopup()
+        .subscribe((response: AuthenticationResult) => {
+          this.msalService.instance.setActiveAccount(response.account);
+        });
     }
   }
 }
