@@ -1,5 +1,7 @@
 const TENANT_ID = '2dff09ac-2b3b-4182-9953-2b548e0d0b39';
 const CLIENT_ID = '2496ba32-31c9-41fb-9259-59c60debcfc3';
+// const TENANT_ID = '16d12b12-20f6-462b-bd90-9a7edac71ce7';
+// const CLIENT_ID = 'd6528405-9f7f-45d7-ade2-704651f48718';
 
 import { Configuration, PublicClientApplication } from '@azure/msal-browser';
 const isIE =

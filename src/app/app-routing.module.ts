@@ -9,7 +9,8 @@ import { PolicyComponent } from './features/policy/policy.component';
 import { CreatePostComponent } from './features/create-post/create-post.component';
 import { InstagramPostDetailComponent } from './features/instagram-post-detail/instagram-post-detail.component';
 import { ZaloPostDetailComponent } from './features/zalo-post-detail/zalo-post-detail.component';
-// import { PowerBiComponent } from './shared/components/power-bi/power-bi.component';
+import { MsalGuard } from '@azure/msal-angular';
+import { PowerBiComponent } from './shared/components/power-bi/power-bi.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -41,7 +42,7 @@ const routes: Routes = [
     component: CreatePostComponent,
     canActivate: [AuthGuard],
   },
-  // { path: 'power-bi', component: PowerBiComponent },
+  { path: 'power-bi', component: PowerBiComponent },
 ];
 
 @NgModule({

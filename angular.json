@@ -46,7 +46,7 @@
               "src/styles.scss",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/powerbi-client/dist/powerbi.js"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules"

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -24,15 +24,18 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import {
   MsalGuard,
   MsalGuardConfiguration,
+  MsalInterceptor,
   MsalInterceptorConfiguration,
   MsalModule,
   MsalService,
 } from '@azure/msal-angular';
-import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import {
-  MSALInstanceFactory,
-  protectedResourceMap,
-} from './shared/directives/msal-config';
+  InteractionType,
+  IPublicClientApplication,
+  PublicClientApplication,
+} from '@azure/msal-browser';
+import { protectedResourceMap } from './shared/directives/msal-config';
+import { PowerBIEmbedModule } from 'powerbi-client-angular';
 
 registerLocaleData(en);
 
@@ -43,22 +46,36 @@ const isIE =
 const TENANT_ID = '2dff09ac-2b3b-4182-9953-2b548e0d0b39';
 const CLIENT_ID = '2496ba32-31c9-41fb-9259-59c60debcfc3';
 
-// Factory function for MSAL Interceptor configuration
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', [
+    'user.read',
+  ]);
+
   return {
     interactionType: InteractionType.Redirect,
-    protectedResourceMap: protectedResourceMap,
+    protectedResourceMap,
   };
 }
-
-// Factory function for MSAL Guard configuration
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
     interactionType: InteractionType.Redirect,
     authRequest: {
       scopes: ['user.read'],
     },
+    loginFailedRoute: '/',
   };
+}
+
+export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication({
+    auth: {
+      clientId: '2496ba32-31c9-41fb-9259-59c60debcfc3',
+      authority:
+        'https://login.microsoftonline.com/2dff09ac-2b3b-4182-9953-2b548e0d0b39',
+      redirectUri: 'http://localhost:4200',
+    },
+  });
 }
 
 @NgModule({
@@ -72,31 +89,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NzMenuModule,
     NzButtonModule,
     HttpClientModule,
-    // MsalModule.forRoot(
-    //   new PublicClientApplication({
-    //     auth: {
-    //       clientId: CLIENT_ID, // Replace with your Azure AD client ID
-    //       authority: `https://login.microsoftonline.com/${TENANT_ID}`, // Replace with your Azure AD tenant ID
-    //       redirectUri: 'http://localhost:4200', // Replace with your redirect URI
-    //     },
-    //     cache: {
-    //       cacheLocation: 'localStorage',
-    //       storeAuthStateInCookie: isIE,
-    //     },
-    //   }),
-    //   {
-    //     interactionType: InteractionType.Redirect, // MSAL Guard Configuration
-    //     authRequest: {
-    //       scopes: ['user.read'],
-    //     },
-    //   },
-    //   {
-    //     interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
-    //     protectedResourceMap: new Map([
-    //       ['https://graph.microsoft.com/v1.0/me', ['user.read']],
-    //     ]),
-    //   },
-    // ),
+    PowerBIEmbedModule,
     MsalModule.forRoot(
       MSALInstanceFactory(),
       MSALGuardConfigFactory(),
@@ -114,9 +107,15 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       useClass: AuthInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
     MsalService,
     MsalGuard,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
