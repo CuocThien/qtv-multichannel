@@ -31,7 +31,7 @@ export class InstagramPostDetailComponent implements OnInit {
       (response: any) => {
         if (!isEmpty(response)) {
           this.postDetail = response.data;
-          const comments = this.postDetail.comments.data;
+          const comments = this.postDetail.comments?.data;
           if (isEmpty(comments)) {
             this.spinner.hide();
             return;
