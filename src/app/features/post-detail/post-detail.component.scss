@@ -13,7 +13,7 @@
   // font-family: 'Times New Roman', serif;
   color: #333;
   max-width: 800px;
-  max-height: 70%;
+  max-height: 80%;
   margin: auto;
 
   .left-column {
@@ -56,13 +56,12 @@
       margin: 0;
     }
 
-    .post-description {
+    .post-content {
       margin-top: 16px;
       line-height: 1.6;
       font-size: 1.2em;
-      max-height: inherit; /* Adjust as needed */
-      overflow: auto;
       padding-right: 10px; /* For scrollbar space */
+      overflow: auto;
     }
 
     .social-media-buttons {
