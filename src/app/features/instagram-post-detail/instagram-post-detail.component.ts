@@ -46,6 +46,7 @@ export class InstagramPostDetailComponent implements OnInit {
           });
           this.spinner.hide();
         }
+        this.spinner.hide();
       },
       (error) => {
         this.spinner.hide();
