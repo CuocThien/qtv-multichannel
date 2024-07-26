@@ -1,15 +1,26 @@
 <div class="post-detail-container">
   <nz-card>
-    <img nz-card-cover src="path/to/image.jpg" alt="Post Image">
-    <div nz-card-meta>
-      <span class="username">username</span>
-      <p>Liked by savannah and thousands of others</p>
-      <p>username - This is an Instagram mobile post mockup with text support... more</p>
+    <div class="post-content">
+      <p>{{postDetail?.caption||''}}</p>
+      <div class="post-images">
+        <img *ngIf="postDetail?.media_url" [src]="postDetail.media_url" alt="image1" class="image" />
+      </div>
     </div>
+    <nz-divider nzType="horizontal"></nz-divider>
     <div class="actions">
-      <i nz-icon nzType="heart" nzTheme="outline"></i>
-      <i nz-icon nzType="message" nzTheme="outline"></i>
-      <i nz-icon nzType="share-alt" nzTheme="outline"></i>
+      <span style="font-size: x-large;">
+        <i nz-icon nzType="heart" [nzTheme]="postDetail?.like_count?'twotone':'outline'"
+          [twoToneColor]="postDetail?.like_count ?'#eb2f96':''"></i>
+        {{postDetail?.like_count || '' }}
+      </span>
+      <span style="font-size: x-large;">
+        <i nz-icon nzType="message" nzTheme="outline"></i>
+        {{postDetail?.comments_count || '' }}
+      </span>
+    </div>
+    <nz-divider nzType="horizontal"></nz-divider>
+    <div class="post-comments">
+      <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
     </div>
   </nz-card>
 </div>

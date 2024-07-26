@@ -3,7 +3,7 @@
   <div class="post-detail">
     <div class="left-column">
       <img class="post-cover"
-        [src]="post.cover||'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg'"
+        [src]="post?.cover||'https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg'"
         alt="Post Cover" />
       <div class="post-buttons">
         <button nz-button nzType="default">Edit</button>
@@ -11,11 +11,11 @@
       </div>
     </div>
     <div class="right-column">
-      <h1 class="post-title">{{ post.title }}</h1>
-      <p class="post-description">{{ post.description }}</p>
-      <p class="post-content">{{ post.content }}</p>
+      <h1 class="post-title">{{ post?.title }}</h1>
+      <p class="post-description">{{ post?.description }}</p>
+      <p class="post-content">{{ post?.content }}</p>
       <div class="social-media-buttons">
-        <label class="facebook" (click)="socialPostDetail('facebook')">
+        <label *ngIf="post?.isFacebook" class="facebook" (click)="socialPostDetail('facebook')">
           <span style=" margin: 0 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
               <path fill="#3F51B5"
@@ -28,7 +28,7 @@
           </span>
           <span class="facebook"> Facebook</span>
         </label>
-        <label class="instagram" (click)="socialPostDetail('instagram')">
+        <label *ngIf="post?.isInstagram" class="instagram" (click)="socialPostDetail('instagram')">
           <span style="margin: 0 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
               <radialGradient id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1" cx="19.38" cy="42.035" r="44.899"
@@ -63,7 +63,7 @@
           </span>
           <span class="instagram"> Instagram</span>
         </label>
-        <label class="zalo" (click)="socialPostDetail('zalo')">
+        <label *ngIf="post?.isZalo" class="zalo" (click)="socialPostDetail('zalo')">
           <span style="margin: 0 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
               <path fill="#2962ff"
