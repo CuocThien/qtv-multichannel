@@ -25,3 +25,8 @@ export interface FacebookComment {
   message: string;
   id: string;
 }
+
+export interface FacebookReact {
+  type: string;
+  count: number;
+}

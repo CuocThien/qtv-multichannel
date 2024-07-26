@@ -77,18 +77,27 @@
     justify-content: space-around;
     margin-bottom: 16px;
 
-    .action-icons {
-      display: flex;
-      align-items: center;
+    .icons-list > span {
+      font-size: x-large;
+      margin-right: 10px;
 
-      i {
-        margin-right: 8px;
-      }
-
-      span {
-        margin-right: 16px;
+      img {
+        width: 32px;
+        height: 32px;
       }
     }
+    // .action-icons {
+    //   display: flex;
+    //   align-items: center;
+
+    //   i {
+    //     margin-right: 8px;
+    //   }
+
+    //   span {
+    //     margin-right: 16px;
+    //   }
+    // }
   }
 
   .post-comments {

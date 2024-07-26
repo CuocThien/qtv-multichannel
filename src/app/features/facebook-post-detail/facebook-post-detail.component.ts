@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentService, FacebookService } from '../../core/services';
-import { Comment, FacebookComment, FacebookPost } from '../../core/models';
+import {
+  Comment,
+  FacebookComment,
+  FacebookPost,
+  FacebookReact,
+} from '../../core/models';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isEmpty } from 'lodash';
+import { isEmpty, keyBy, mapValues } from 'lodash';
 import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-facebook-post-detail',
@@ -12,6 +17,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class FacebookPostDetailComponent implements OnInit {
   comments: FacebookComment[] = [];
   postDetail!: FacebookPost;
+  reactions: any;
   constructor(
     private facebookService: FacebookService,
     private route: ActivatedRoute,
@@ -48,6 +54,11 @@ export class FacebookPostDetailComponent implements OnInit {
       this.facebookService.getReacts(postId).subscribe(
         (response: any) => {
           if (!isEmpty(response)) {
+            const arrReact = response.data;
+            this.reactions = mapValues(
+              keyBy(arrReact, 'type'),
+              (o: FacebookReact) => o.count,
+            );
             this.spinner.hide();
           }
         },
