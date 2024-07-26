@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services';
 import { MsalService } from '@azure/msal-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',

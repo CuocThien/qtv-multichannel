@@ -34,10 +34,6 @@ export class InstagramPostDetailComponent implements OnInit {
               created_time: '',
             };
           });
-          console.log(
-            '🐼 => InstagramPostDetailComponent => this.postDetail:',
-            this.postDetail,
-          );
         }
       },
       (error) => {},

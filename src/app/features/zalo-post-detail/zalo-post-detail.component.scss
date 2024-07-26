@@ -3,50 +3,58 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  height: 100%;
+  overflow: auto;
+
+  .post-content {
+    margin-bottom: 16px;
+
+    .post-hashtag {
+      color: #1890ff;
+      margin-bottom: 12px;
+    }
+
+    .post-images {
+      max-width: 100%;
+
+      .image {
+        width: 100%;
+      }
+    }
+  }
+  .post-comments {
+    .comment {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .comment-content {
+        margin-left: 12px;
+
+        .comment-author {
+          font-weight: bold;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
 }
 
 nz-card {
-  width: 100%;
   max-width: 500px;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.post-header-info {
-  margin-left: 10px;
+  width: 100%;
 }
 
 .username {
   font-weight: bold;
 }
 
-.post-time {
-  color: gray;
-}
-
-.post-content p {
-  margin: 10px 0;
-}
-
-.post-content img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.post-actions {
+.actions {
   display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
-.post-comment {
-  padding-top: 10px;
-}
-
-.post-comment input {
-  width: 100%;
+.actions i {
+  font-size: 24px;
 }

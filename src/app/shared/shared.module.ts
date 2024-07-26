@@ -6,9 +6,10 @@ import { CommentComponent } from './components/comment/comment.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { PowerBiComponent } from './components/power-bi/power-bi.component';
 import { PowerBIEmbedModule } from 'powerbi-client-angular';
+import { PowerBiV2Component } from './components/power-bi-v2/power-bi-v2.component';
 
 @NgModule({
-  declarations: [PostCardComponent, CommentComponent, PowerBiComponent],
+  declarations: [PostCardComponent, CommentComponent, PowerBiComponent, PowerBiV2Component],
   imports: [CommonModule, NzCardModule, NzAvatarModule, PowerBIEmbedModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [PostCardComponent, CommentComponent],

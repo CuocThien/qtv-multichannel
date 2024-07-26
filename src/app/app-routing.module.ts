@@ -11,6 +11,7 @@ import { InstagramPostDetailComponent } from './features/instagram-post-detail/i
 import { ZaloPostDetailComponent } from './features/zalo-post-detail/zalo-post-detail.component';
 import { MsalGuard } from '@azure/msal-angular';
 import { PowerBiComponent } from './shared/components/power-bi/power-bi.component';
+import { PowerBiV2Component } from './shared/components/power-bi-v2/power-bi-v2.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -42,7 +43,8 @@ const routes: Routes = [
     component: CreatePostComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'power-bi', component: PowerBiComponent },
+  { path: 'quarterly-post-reaction', component: PowerBiComponent },
+  { path: 'reactions-comments-by-type', component: PowerBiV2Component },
 ];
 
 @NgModule({

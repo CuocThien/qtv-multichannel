@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { MsalService } from '@azure/msal-angular';
 import { isElement, isEmpty } from 'lodash';
 

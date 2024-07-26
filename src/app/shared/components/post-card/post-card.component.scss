@@ -4,6 +4,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 8px; /* Add border-radius for the post card */
   overflow: hidden; /* Ensure child elements do not overflow the card's rounded corners */
+  max-height: 55vh;
 
   &:hover {
     transform: scale(1.05);
@@ -21,5 +22,12 @@
     // overflow: hidden;
     // text-overflow: clip;
     // white-space: break-spaces;
+  }
+
+  .img-cover {
+    max-height: 40vh !important;
+    width: auto;
+    height: auto;
+    margin: auto;
   }
 }
