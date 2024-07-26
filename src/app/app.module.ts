@@ -96,7 +96,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
       MSALGuardConfigFactory(),
       MSALInterceptorConfigFactory(),
     ),
-    NgxSpinnerModule.forRoot(),
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

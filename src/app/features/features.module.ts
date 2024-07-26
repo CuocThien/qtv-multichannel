@@ -26,6 +26,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../core/interceptors/auth.interceptor';
 import { InstagramPostDetailComponent } from './instagram-post-detail/instagram-post-detail.component';
 import { ZaloPostDetailComponent } from './zalo-post-detail/zalo-post-detail.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -55,6 +56,7 @@ import { ZaloPostDetailComponent } from './zalo-post-detail/zalo-post-detail.com
     NzUploadModule,
     NzDatePickerModule,
     NzModalModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
   exports: [
     LoginComponent,

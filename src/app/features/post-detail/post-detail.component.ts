@@ -4,6 +4,7 @@ import { PostService } from '../../core/services';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Post } from '../../core/models';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-post-detail',
@@ -19,20 +20,27 @@ export class PostDetailComponent implements OnInit {
     private router: Router,
     private msg: NzMessageService,
     private modal: NzModalService,
+    private spinner: NgxSpinnerService,
   ) {}
 
   ngOnInit(): void {
     const postId = this.route.snapshot.paramMap.get('id');
-    if (!postId) return;
+    this.spinner.show();
+    if (!postId) {
+      this.router.navigate(['/home']);
+      return;
+    }
     this.postService.getPost(postId).subscribe(
       (response: any) => {
         if (response) {
           this.post = response.data;
           this.msg.success(response.message);
+          this.spinner.hide();
         }
       },
       (error) => {
         this.msg.error(error.error.message);
+        this.spinner.hide();
       },
     );
   }

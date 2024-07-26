@@ -44,7 +44,8 @@
             "styles": [
               "src/theme.less",
               "src/styles.scss",
-              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
             ],
             "scripts": ["node_modules/powerbi-client/dist/powerbi.js"],
             "stylePreprocessorOptions": {

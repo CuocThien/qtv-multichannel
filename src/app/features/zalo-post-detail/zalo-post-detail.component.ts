@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ZaloService } from '../../core/services/zalo.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { isEmpty } from 'lodash';
 import { ZaloPost } from '../../core/models';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-zalo-post-detail',
@@ -14,22 +15,28 @@ export class ZaloPostDetailComponent {
   constructor(
     private zaloService: ZaloService,
     private route: ActivatedRoute,
+    private router: Router,
+    private spinner: NgxSpinnerService,
   ) {}
 
   ngOnInit(): void {
     const postId = this.route.snapshot.paramMap.get('id');
-    if (!postId) return;
+    this.spinner.show();
+    if (!postId) {
+      this.router.navigate(['/home']);
+      return;
+    }
+
     this.zaloService.getPostDetail(postId).subscribe(
       (response: any) => {
         if (!isEmpty(response)) {
           this.postDetail = response.data;
-          console.log(
-            '🐼 => ZaloPostDetailComponent => this.postDetail:',
-            this.postDetail,
-          );
+          this.spinner.hide();
         }
       },
-      (error) => {},
+      (error) => {
+        this.spinner.show();
+      },
     );
   }
 }

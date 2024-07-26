@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentService, FacebookService } from '../../core/services';
 import { Comment, FacebookComment, FacebookPost } from '../../core/models';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { isEmpty } from 'lodash';
 import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
@@ -15,6 +15,7 @@ export class FacebookPostDetailComponent implements OnInit {
   constructor(
     private facebookService: FacebookService,
     private route: ActivatedRoute,
+    private router: Router,
     private spinner: NgxSpinnerService,
   ) {}
 
@@ -22,7 +23,11 @@ export class FacebookPostDetailComponent implements OnInit {
     const postId = this.route.snapshot.paramMap.get('id');
 
     this.spinner.show();
-    if (!postId) return;
+    if (!postId) {
+      this.router.navigate(['/home']);
+
+      return;
+    }
     await Promise.all([
       this.facebookService.getPostDetail(postId).subscribe(
         (response: any) => {
@@ -43,12 +48,14 @@ export class FacebookPostDetailComponent implements OnInit {
       this.facebookService.getReacts(postId).subscribe(
         (response: any) => {
           if (!isEmpty(response)) {
+            this.spinner.hide();
           }
         },
-        (error) => {},
+        (error) => {
+          this.spinner.hide();
+        },
       ),
     ]);
-    this.spinner.hide();
     // this.comments = this.commentService.getComments();
     // this.commentService.getComments().subscribe((data: Comment[]) => {
     //   this.comments = data;

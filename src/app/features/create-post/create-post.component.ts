@@ -6,6 +6,7 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { PostService } from '../../core/services';
 import moment from 'moment';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-create-post',
@@ -36,6 +37,7 @@ export class CreatePostComponent {
     private msg: NzMessageService,
     private readonly postService: PostService,
     private router: Router,
+    private spinner: NgxSpinnerService,
   ) {
     this.postForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -105,6 +107,7 @@ export class CreatePostComponent {
   }
 
   onSubmit(): void {
+    this.spinner.show();
     if (this.postForm.valid) {
       this.postForm.patchValue({
         cover: this.imagePreview,
@@ -117,15 +120,17 @@ export class CreatePostComponent {
           if (response) {
             this.msg.success(response.data.message);
             this.router.navigate(['/home']);
+            this.spinner.hide();
           }
         },
         (error) => {
+          this.spinner.hide();
           this.msg.error(error.error.message);
         },
       );
-      console.log('Form Submitted!');
       // Handle form submission, e.g., send data to the server
     } else {
+      this.spinner.hide();
       this.msg.error('Please fill out the form correctly.');
     }
   }
