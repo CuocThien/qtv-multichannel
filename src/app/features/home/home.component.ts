@@ -4,6 +4,7 @@ import { Post } from '../../core/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { isEmpty } from 'lodash';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -22,9 +23,11 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private msg: NzMessageService,
     private route: ActivatedRoute,
+    private spinner: NgxSpinnerService,
   ) {}
 
   private _getPosts(query: any) {
+    this.spinner.show();
     this.postService.getPosts(query).subscribe(
       (response: any) => {
         if (!isEmpty(response)) {
@@ -37,10 +40,12 @@ export class HomeComponent implements OnInit {
             queryParams: query,
             queryParamsHandling: 'merge', // remove to replace all query params by provided
           });
+          this.spinner.hide();
         }
       },
       (error) => {
         this.msg.error(error.error.message);
+        this.spinner.hide();
       },
     );
   }

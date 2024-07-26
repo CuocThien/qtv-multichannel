@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Comment } from '../../../core/models';
+import { FacebookComment } from '../../../core/models';
 
 @Component({
   selector: 'app-comment',
@@ -7,7 +7,7 @@ import { Comment } from '../../../core/models';
   styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent implements OnInit {
-  @Input() comment!: Comment;
+  @Input() comment!: FacebookComment;
 
   constructor() {}
 

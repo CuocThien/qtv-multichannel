@@ -36,6 +36,7 @@ import {
 } from '@azure/msal-browser';
 import { protectedResourceMap } from './shared/directives/msal-config';
 import { PowerBIEmbedModule } from 'powerbi-client-angular';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 registerLocaleData(en);
 
@@ -95,6 +96,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
       MSALGuardConfigFactory(),
       MSALInterceptorConfigFactory(),
     ),
+    NgxSpinnerModule.forRoot(),
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
