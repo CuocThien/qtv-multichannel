@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 import { API_URL } from '../../../environments/environment.prod';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -53,7 +53,18 @@ export class AuthService {
   }
 
   isLoggedIn(): Observable<boolean> {
-    this.isLoggedInSubject.next(this.getToken() !== null);
-    return this.isLoggedInSubject.asObservable();
+    return this.http.get(`${API_URL}/auth/profile`).pipe(
+      map(() => {
+        this.isLoggedInSubject.next(true);
+        return true;
+      }),
+      catchError(() => {
+        this.isLoggedInSubject.next(false);
+        this.logout();
+        return of(false);
+      }),
+    );
+    // this.isLoggedInSubject.next(this.getToken() !== null);
+    // return this.isLoggedInSubject.asObservable();
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services';
 import { MsalService } from '@azure/msal-angular';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +25,7 @@ export class AppComponent implements OnInit {
       .catch((error) => {
         console.error('MSAL initialization error: ', error);
       });
-    this.authService.isLoggedIn().subscribe((loggedIn: boolean) => {
-      this.isLoggedIn = loggedIn;
-    });
+    this.isLoggedIn = this.authService.getToken() !== null;
   }
 
   logout(): void {
