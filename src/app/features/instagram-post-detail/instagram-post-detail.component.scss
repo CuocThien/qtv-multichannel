@@ -9,11 +9,6 @@
   .post-content {
     margin-bottom: 16px;
 
-    .post-hashtag {
-      color: #1890ff;
-      margin-bottom: 12px;
-    }
-
     .post-images {
       max-width: 100%;
 
@@ -41,12 +36,10 @@
 }
 
 nz-card {
-  max-width: 500px;
+  max-width: 60%;
   width: 100%;
-}
-
-.username {
-  font-weight: bold;
+  overflow: auto;
+  height: 100%;
 }
 
 .actions {
